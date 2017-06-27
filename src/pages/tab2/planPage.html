@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item-group *ngFor="let planItem of plan; let i=index">
+    <ion-item-divider (click)="toggleGroup(i)">{{planItem.Heading}}<ion-icon item-right [name]="(dropShow[i] != true) ? 'arrow-dropdown' : 'arrow-dropup'"></ion-icon></ion-item-divider>
+
+    <div *ngIf="dropShow[i] == true">
+
+      <ion-item [class.green-row]="checked[i][0] == true">
+        <ion-label>Set #1</ion-label>
+        <ion-checkbox [(ngModel)]="checked[i][0]" item-right (ionChange)="saveChange(i, '1', 'check', $event.value)"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-input type="string" *ngFor="let item of planItem.Sets[0]['1']; let j=index" [value]="planItem.Sets[0]['1'][j]" (ionChange)="saveChange(i, '1', j, $event.value)">{{planItem.Sets[0]['1'][j]}}</ion-input>
+      </ion-item>
+
+      <ion-item [class.green-row]="checked[i][1] == true">
+        <ion-label>Set #2</ion-label>
+        <ion-checkbox [(ngModel)]="checked[i][1]" item-right (ionChange)="saveChange(i, '2', 'check', $event.value)"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-input type="string" *ngFor="let item of planItem.Sets[0]['2']; let j=index" [value]="planItem.Sets[0]['2'][j]" (ionChange)="saveChange(i, '2', j, $event.value)"></ion-input>
+      </ion-item>
+
+      <ion-item [class.green-row]="checked[i][2] == true">
+        <ion-label>Set #3</ion-label>
+        <ion-checkbox [(ngModel)]="checked[i][2]" item-right (ionChange)="saveChange(i, '3', 'check', $event.value)"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-input type="string" *ngFor="let item of planItem.Sets[0]['3']; let j=index" [value]="planItem.Sets[0]['3'][j]" (ionChange)="saveChange(i, '3', j, $event.value)"></ion-input>
+      </ion-item>
+
+    </div>
+  </ion-item-group>
+</ion-content>

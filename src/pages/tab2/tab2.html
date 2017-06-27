@@ -1,0 +1,9 @@
+
+<ion-content>
+  <div id="tab2-content">
+    <ion-item *ngFor="let plan of plans; let i=index" tappable no-lines (click)="openPlanPage(plan)">
+      <h1>{{plan[0].Title}} {{plan[0].Author}}</h1>
+      <h2>{{plan[2].Heading}}</h2>
+    </ion-item>
+</div>
+</ion-content>

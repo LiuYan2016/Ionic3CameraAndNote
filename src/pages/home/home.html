@@ -1,0 +1,16 @@
+
+<ion-content>
+  <img id="back_img" [src]="base64Image" *ngIf="base64Image" />
+  <button id="camera_button" ion-button (click)="takePicture()"><ion-icon name="camera"></ion-icon></button>
+  <div id="field_part">
+    <ion-item no-lines tappable (click)="toggleGroup()" [class.trans-back]="dropShow == false">
+      Day : {{displayDay}}
+      <ion-icon item-right [name]="(dropShow != true) ? 'arrow-dropdown' : 'arrow-dropup'"></ion-icon>
+    </ion-item>
+    <div *ngIf="dropShow == true">
+      <ion-item *ngFor="let field of profile; let i=index">
+        <ion-label fixed>{{field}}:</ion-label><ion-input type="string" [(ngModel)]="savedProfile[i].value" (ionChange)="changeField(i, $event.value)"></ion-input>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>

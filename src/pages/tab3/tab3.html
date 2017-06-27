@@ -1,0 +1,8 @@
+
+<ion-content>
+  <div id="tab3-content">
+    <ion-item *ngFor="let jsonFile of jsonFiles; let i=index" tappable no-lines (click)="openDumpPage(i)">
+      <h1>{{jsonFile}}</h1>
+    </ion-item>
+</div>
+</ion-content>
